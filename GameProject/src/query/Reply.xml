@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.reply.dao.ReplyDao">
+	<!-- 게시물 기본 조회 -->
+	<select id="replyList" parameterType="reply" resultType="reply">
+		select r_num, b_num, r_name, r_content, r_pwd,
+			   to_char(r_date, 'YYYY-MM-DD HH24:MI:SS')
+			   as r_date
+		from spring_reply
+		where b_num = #{b_num}
+		order by r_num desc
+	</select>
+</mapper>
